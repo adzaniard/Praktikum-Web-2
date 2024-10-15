@@ -77,6 +77,7 @@ Object-Oriented Programming (OOP) atau Pemrograman Berorientasi Objek merupakan 
   ?>
   ```
 - **Hasil Output**<br>
+![1_1](https://github.com/user-attachments/assets/1ca19344-2601-4645-b1ef-4ec8c46f0075)
 
 **2. Implementasi Constructor**<br>
 - **Tambahkan constructor pada kelas Mahasiswa yang akan menginisialisasi
@@ -130,6 +131,7 @@ atribut `nama`, `nim`, dan `jurusan`.**<br>
   echo $mhs1->tampilkanData();
   ```
 - **Hasil Output:**<br>
+![1_2](https://github.com/user-attachments/assets/4b371a45-3b58-45a4-8660-e86551f099e0)
 
 **3. Membuat Metode Tambahan**<br>
 - **Buat metode `updateJurusan()` dalam kelas `Mahasiswa` yang memungkinkan
@@ -208,6 +210,7 @@ perubahan jurusan.**<br>
   ?>
   ```
 - **Hasil Output**<br>
+![1_3](https://github.com/user-attachments/assets/d08678a7-1a8d-4194-bbaa-4fddb4cca0f4)
 
 **4. Penggunaan Atribut dan Metode**<br>
 - **Ubah nilai atribut nim dari objek Mahasiswa menggunakan metode setter.**<br>
@@ -265,6 +268,7 @@ tampilkanData().**<br>
   ?>
   ```
 - **Hasil Output**<br>
+![1_4](https://github.com/user-attachments/assets/5883466e-d245-43ce-8019-b70b4e061b8b)
 
 ### TUGAS:
 **1. Implementasikan kelas Dosen dengan atribut `nama`, `nip`, dan `mataKuliah`**<br>
@@ -323,6 +327,7 @@ echo $dsn1->tampilkanDosen();
 ?>
 ```
 **Hasil Output:**<br>
+![1_5](https://github.com/user-attachments/assets/45610aca-a142-4015-bbc7-4586ecb3eee5)
 
 
 ## Jobsheet 2 : Implementasi Prinsip OOP dalam PHP
@@ -384,6 +389,7 @@ echo $dsn1->tampilkanDosen();
   ?>
   ```
 - **Hasil Output:**<br>
+![2_1](https://github.com/user-attachments/assets/ae714799-40b7-47ab-80b1-52d3e1a1611e)
 
 **2. Encapsulation**<br>
 Enkapsulasi adalah proses penyembunyian data suatu objek dan hanya memperbolehkan akses atau modifikasi data melalui metode khusus (getter dan setter). Hal ini bertujuan untuk melindungi data dari manipulasi langsung dan memastikan bahwa perubahan pada data dilakukan dengan cara yang terkontrol.
@@ -529,6 +535,7 @@ Enkapsulasi adalah proses penyembunyian data suatu objek dan hanya memperbolehka
   ?>
   ```
 - **Hasil Output:**<br>
+![2_2](https://github.com/user-attachments/assets/4eab9f51-1b33-4df6-b47a-7defe88b5d82)
 
 **3. Inheritance**<br>
 Inheritance (pewarisan) memungkinkan suatu kelas untuk mewarisi properti (atribut) dan metode dari kelas lain menggunakan kata kunci extend di kelas turunan (sub class). Penggunaan inheritance dapat membuat kelas baru yang memiliki atribut dan metode dari kelas yang sudah ada (super class), serta menambahkan atau memodifikasi atribut dan metode tersebut.
@@ -633,6 +640,7 @@ Inheritance (pewarisan) memungkinkan suatu kelas untuk mewarisi properti (atribu
   ?>
   ```
 - **Hasil Output:**<br>
+![2_3](https://github.com/user-attachments/assets/c8f670fb-76be-480a-b0dc-1d22b1228802)
 
 **4. Polymorphism**<br>
 Polymorphism (polimorfisme) memungkinkan objek dari berbagai kelas untuk diakses melalui antarmuka yang sama, tetapi masing-masing objek tersebut dapat memberikan implementasi yang berbeda pada metode yang dipanggil. Polimorfisme memberikan fleksibilitas dalam kode, karena metode yang sama dapat memiliki perilaku yang berbeda tergantung pada objek yang menggunakannya.
@@ -779,6 +787,7 @@ Polymorphism (polimorfisme) memungkinkan objek dari berbagai kelas untuk diakses
   ?>
   ```
 - **Hasil Output:**<br>
+![2_4](https://github.com/user-attachments/assets/434130c2-f297-42bb-b89a-020552b11f99)
 
 **5. Abstraction**<br>
 Abstraction (abstraksi) berfungsi untuk menyembunyikan detail implementasi yang kompleks dari pengguna, dan hanya menampilkan fungsionalitas atau informasi yang diperlukan. Hal ini membantu memudahkan penggunaan dan memelihara kode, karena hanya berinteraksi dengan metode atau fitur yang relevan.
@@ -919,4 +928,5 @@ Abstraction (abstraksi) berfungsi untuk menyembunyikan detail implementasi yang 
   ?>
   ```
 - **Hasil Output:**<br>
+![2_5](https://github.com/user-attachments/assets/b0aa8865-7a7f-486c-b700-2b61a22ffa4c)
 
