@@ -637,7 +637,7 @@ Inheritance (pewarisan) memungkinkan suatu kelas untuk mewarisi properti (atribu
 **4. Polymorphism**<br>
 Polymorphism (polimorfisme) memungkinkan objek dari berbagai kelas untuk diakses melalui antarmuka yang sama, tetapi masing-masing objek tersebut dapat memberikan implementasi yang berbeda pada metode yang dipanggil. Polimorfisme memberikan fleksibilitas dalam kode, karena metode yang sama dapat memiliki perilaku yang berbeda tergantung pada objek yang menggunakannya.
 - **Buat class `Pengguna` dengan metode `aksesFitur()`.**<br>
-  Mendeklarasikan class baru bernama `Pengguna `yang akan digunakan untuk membuat objek yang mewakili pengguna. Kemudian Mendeklarasikan atribut `nama` menyimpan data yang berkaitan dengan atribut tersebut. Membuat metode `aksesFitur()` untuk mengakses nilai dari atribut protected yang telah diinisialisasi di konstruktor kelas induk sehingga metode ini dapat digunakan oleh setiap kelas yang mewarisi.
+  >Mendeklarasikan class baru bernama `Pengguna `yang akan digunakan untuk membuat objek yang mewakili pengguna. Kemudian Mendeklarasikan atribut `nama` menyimpan data yang berkaitan dengan atribut tersebut. Membuat metode `aksesFitur()` untuk mengakses nilai dari atribut protected yang telah diinisialisasi di konstruktor kelas induk sehingga metode ini dapat digunakan oleh setiap kelas yang mewarisi.
   ```
   <?php
   // Deklarasi kelas Pengguna
