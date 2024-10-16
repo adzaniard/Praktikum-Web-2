@@ -66,9 +66,10 @@ class Mahasiswa extends Person {
     private $jurusan;
 
     // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
-    public function __construct($nama, $nim) {
+    public function __construct($nama, $nim, $jurusan) {
         parent::__construct($nama); //Memanggil konstruktor dari super class
         $this->nim = $nim;
+        $this->jurusan = $jurusan;
     }
 
     // Metode untuk mendapatkan nilai atribut nim
@@ -125,11 +126,12 @@ $jurnalMhs = new JurnalMahasiswa();
 //Memanggil metode untuk menampilkan data 
 echo $mhs1->getRole();
 echo $jurnalMhs->pengajuanJurnal();
+echo "<br><br>";
 
 // Pembuatan objek baru menggunakan parameter
-$dsn1 = new Mahasiswa("Nahida", "987654321", "Bahasa Inggris");
-$jurnalDsn = new JurnalMahasiswa();
+$dsn1 = new Dosen("Nahida", "987654321", "Bahasa Inggris");
+$jurnalDsn = new JurnalDosen();
 //Memanggil metode untuk menampilkan data 
 echo $dsn1->getRole();
 echo $jurnalDsn->pengajuanJurnal();
-
+?>
