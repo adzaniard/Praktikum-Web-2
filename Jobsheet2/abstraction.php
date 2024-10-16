@@ -48,6 +48,7 @@ class Mahasiswa extends Pengguna {
         return "Mahasiswa " . $this->nama . " dengan NIM " . $this->nim . " dari Jurusan " . $this->jurusan . " mendapatkan akses fitur Pengguna Terdaftar.";
     }
 }
+
 // Pembuatan objek baru menggunakan parameter
 $dsn1 = new Dosen("Kaveh", "Ukur Tanah");
 echo $dsn1->aksesFitur(); //Memanggil metode untuk menampilkan data
