@@ -930,3 +930,811 @@ Abstraction (abstraksi) berfungsi untuk menyembunyikan detail implementasi yang 
 - **Hasil Output:**<br>
 ![2_5](https://github.com/user-attachments/assets/b0aa8865-7a7f-486c-b700-2b61a22ffa4c)
 
+## Jobsheet 3 : Menerapkan Konsep Inheritance, Polymorphism, Encapsulation, dan Abstraction dalam PHP
+### INSTRUKSI KERJA:
+**1. Inheritance**<br>
+- **Buat kelas Person dengan atribut name dan metode getName().**<br>
+  >Mendeklarasikan class baru bernama `Pengguna `yang akan digunakan untuk membuat objek yang mewakili pengguna. Kemudian mendeklarasikan atribut `name` menyimpan data yang berkaitan dengan atribut tersebut. Membuat metode `getName()` untuk mengakses nilai dari atribut protected yang telah diinisialisasi di konstruktor kelas induk sehingga metode ini dapat digunakan oleh setiap kelas yang mewarisi.
+  ```
+  <?php
+  // Deklarasi kelas Person
+  class Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+      protected $name;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name) {
+          $this->name = $name;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut nama
+      public function getName() {
+          return $this->name; //Menetapkan nilai parameter $nama ke atribut nama
+      }
+  }
+  ```
+- **Buat kelas Student yang mewarisi dari Person dan tambahkan atribut studentID serta metode getStudentID().**<br>
+  >Mendeklarasikan class baru bernama `Student `yang akan digunakan untuk membuat objek yang mewakili pengguna. Kemudian mendeklarasikan atribut `studentID` menyimpan data yang berkaitan dengan atribut tersebut. Membuat metode `getStudentID()` untuk mengakses nilai dari atribut yang telah diinisialisasi di konstruktor kelas.
+  ```
+  <?php
+  // Deklarasi kelas Person
+  class Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+      protected $name;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name) {
+          $this->name = $name;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut nama
+      public function getName() {
+          return $this->name; //Menetapkan nilai parameter $nama ke atribut nama
+      }
+  }
+  
+  // Deklarasi kelas Student
+  class Student extends Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Student
+      public $studentID;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name, $studentID) {
+          parent::__construct($name); //Memanggil konstruktor dari super class
+          $this->studentID = $studentID;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut studentID
+      public function getStudentID() {
+          return $this->studentID; //Menetapkan nilai parameter $studentID ke atribut studentID
+      }
+  }
+  
+  // Pembuatan objek baru menggunakan parameter
+  $student1 = new Student("Kinich", "230203055");
+  //Memanggil metode getter untuk menampilkan data 
+  echo "Student " . $student1->getName() . " dengan Student ID " . $student1->getStudentID();
+  ```
+- **Hasil Output**<br>
+![3_1](https://github.com/user-attachments/assets/a62befb8-8c88-489d-8bd5-4ca1e032f0fc)
+
+**2. Polymorphism**<br>
+- **Buat kelas Teacher yang juga mewarisi dari Person dan tambahkan atribut teacherID.**<br>
+  >Mendeklarasikan class baru bernama `Teacher ` yang mewarisi kelas Person dan akan digunakan untuk membuat objek yang mewakili teacher. Kemudian mendeklarasikan atribut `teacherID` yang menyimpan data yang berkaitan dengan atribut tersebut.
+  ```
+  <?php
+  // Deklarasi kelas Person
+  class Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+      protected $name;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name) {
+          $this->name = $name;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut nama
+      public function getName() {
+          return $this->name; //Mengembalikan nilai atribut nama
+      }
+  }
+  
+  // Deklarasi kelas Student
+  class Student extends Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Student
+      public $studentID;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name, $studentID) {
+          parent::__construct($name); //Memanggil konstruktor dari super class
+          $this->studentID = $studentID;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut studentID
+      public function getStudentID() {
+          return $this->studentID; //Mengembalikan nilai atribut studentID
+      }
+  
+      // Metode untuk mendapatkan nilai atribut nama
+      public function getName() {
+          return "Student bernama " . $this->name; //Mengembalikan nilai atribut nama
+      }
+  }
+  
+  // Deklarasi kelas Teacher
+  class Teacher extends Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Teacher
+      public $teacherID;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name, $teacherID) {
+          parent::__construct($name);
+          $this->teacherID = $teacherID;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut teacherID
+      public function getTeacherID() {
+          return $this->teacherID; //Mengembalikan nilai atribut teacherID
+      }
+  ```
+- **Override metode getName() di kelas Student dan Teacher untuk menampilkan format berbeda.**<br>
+  >Kelas `Student` mengganti (override) metode `getName() dari kelas Person serta mengembalikan nilai dari atribut `name` di kelas Student. Sedangkan kelas `Teacher` mengganti (override) metode `getName() dari kelas Person serta mengembalikan nilai dari atribut `name` di kelas Teacher. 
+  ```
+  <?php
+  // Deklarasi kelas Person
+  class Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+      protected $name;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name) {
+          $this->name = $name;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut nama
+      public function getName() {
+          return $this->name; //Mengembalikan nilai atribut nama
+      }
+  }
+  
+  // Deklarasi kelas Student
+  class Student extends Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Student
+      public $studentID;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name, $studentID) {
+          parent::__construct($name); //Memanggil konstruktor dari super class
+          $this->studentID = $studentID;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut studentID
+      public function getStudentID() {
+          return $this->studentID; //Mengembalikan nilai atribut studentID
+      }
+  
+      // Metode untuk mendapatkan nilai atribut nama
+      public function getName() {
+          return "Student bernama " . $this->name; //Mengembalikan nilai atribut nama
+      }
+  }
+  
+  // Deklarasi kelas Teacher
+  class Teacher extends Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Teacher
+      public $teacherID;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name, $teacherID) {
+          parent::__construct($name);
+          $this->teacherID = $teacherID;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut teacherID
+      public function getTeacherID() {
+          return $this->teacherID; //Mengembalikan nilai atribut teacherID
+      }
+  
+      // Metode untuk mendapatkan nilai atribut nama
+      public function getName() {
+          return "Teacher bernama " . $this->name; //Mengembalikan nilai atribut nama
+      }
+  }
+  
+  // Pembuatan objek baru menggunakan parameter
+  $student1 = new Student("Kinich", "230203055");
+  //Memanggil metode getter untuk menampilkan data 
+  echo $student1->getName() . " dengan Student ID " . $student1->getStudentID() . ".<br>";
+  
+  // Pembuatan objek baru menggunakan parameter
+  $teacher1 = new Teacher("Alhaitham", "123456789");
+  //Memanggil metode getter untuk menampilkan data 
+  echo $teacher1->getName() . " dengan Teacher ID " . $teacher1->getTeacherID() . ".";
+  ```
+- **Hasil Output**<br>
+![3_2](https://github.com/user-attachments/assets/69f8b09c-d894-4e61-acf9-f3c264663ed8)
+
+**3. Encapsulation**<br>
+- **Ubah atribut name dan studentID dalam kelas Student menjadi private.**<br>
+  >Mengubah atribut `name` dan `studentID` menjadi private sehingga hanya bisa diakses di dalam kelas itu sendiri dan tidak bisa diakses langsung oleh kelas turunan atau dari luar kelas.
+  ```
+  <?php
+  // Deklarasi kelas Person
+  class Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+      private $name;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name) {
+          $this->name = $name;
+      }
+  }
+  
+  // Deklarasi kelas Student
+  class Student extends Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Student
+      private $studentID;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name, $studentID) {
+          parent::__construct($name); //Memanggil konstruktor dari super class
+          $this->studentID = $studentID;
+      }
+  ```
+- **Tambahkan metode setter dan getter untuk mengakses dan mengubah nilai atribut `name` dan `studentID`.**<br>
+  >Menambahkan metode setter `setName($name)` dan `setStudentID($studentID)` untuk memperbarui nilai atribut `name` dan `studentID` dengan nilai baru yang diberikan sebagai parameter. Menambahkan metode getter `getName()` dan `getStudentID()` mengakses nilai dari atribut private yang telah diinisialisasi di konstruktor.
+  ```
+  <?php
+  // Deklarasi kelas Person
+  class Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+      private $name;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name) {
+          $this->name = $name;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut nama
+      public function getName() {
+          return $this->name; //Mengembalikan nilai atribut nama
+      }
+  
+      //Metode untuk mengatur nilai atribut nama
+      public function setName($name) {
+          $this->name = $name; //Menetapkan nilai parameter $nama ke atribut nama
+      }
+  }
+  
+  // Deklarasi kelas Student
+  class Student extends Person {
+      // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Student
+      private $studentID;
+  
+      // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+      public function __construct($name, $studentID) {
+          parent::__construct($name); //Memanggil konstruktor dari super class
+          $this->studentID = $studentID;
+      }
+  
+      // Metode untuk mendapatkan nilai atribut studentID
+      public function getStudentID() {
+          return $this->studentID; //Mengembalikan nilai atribut studentID
+      }
+  
+      //Metode untuk mengatur nilai atribut studentID
+      public function setStudentID($studentID) {
+          $this->studentID = $studentID; //Menetapkan nilai parameter $studentID ke atribut studentID
+      }
+  }
+  
+  // Pembuatan objek baru menggunakan parameter
+  $student1 = new Student("Mualani", "230102030");
+  
+  //Memanggil metode getter untuk menampilkan data 
+  echo "<b>Data Student awal:</b><br>";
+  echo "Nama: " . $student1->getName() . "<br>";
+  echo "Student ID: " . $student1->getStudentID() . "<br>";
+  
+  //Memanggil metode setter untuk mengubah nilai atribut
+  $student1->setName("Kachina");
+  $student1->setStudentID("230102045");
+  
+  //Memanggil metode getter untuk menampilkan data 
+  echo "<br><b>Data Student yang sudah diperbarui menggunakan metode setter:</b><br>";
+  echo "Nama: " . $student1->getName() . "<br>";
+  echo "Student ID: " . $student1->getStudentID() . "<br>";
+  ?>
+  ```
+- **Hasil Output**<br>
+![3_3](https://github.com/user-attachments/assets/e27301c9-86b3-4693-ab6f-a69e997842bd)
+
+**4. Abstraction**<br>
+- **Buat kelas abstrak Course dengan metode abstrak getCourseDetails().**<br>
+  >Mendeklarasikan absctract class baru bernama `Course `yang akan digunakan sebagai kelas dasar yang harus diwariskan oleh kelas lain. Membuat metode abstrak `getCourseDetails()` tanpa implementasi di kelas `Course` sehingga harus diimplementasikan di kelas turunan.
+  ```
+  <?php
+  // Deklarasi kelas abstrak Course
+  abstract class Course {
+      // Metode abstrak yang akan diimplementasikan oleh kelas turunan
+      abstract public function getCourseDetails();
+  }
+  ```
+- **Buat kelas OnlineCourse dan OfflineCourse yang mengimplementasikan getCourseDetails() untuk memberikan detail yang berbeda.**<br>
+  >Mendeklarasikan class baru bernama `OnlineCourse` dan `OfflineCourse` yang mewarisi kelas `Course`. Kemudian mengimplementasikan metode `getCourseDetails()` ke kelas masing-masing yang memiliki tindakan berbeda dalam menampilkan informasi.
+  ```
+  <?php
+  // Deklarasi kelas abstrak Course
+  abstract class Course {
+      // Metode abstrak yang akan diimplementasikan oleh kelas turunan
+      abstract public function getCourseDetails();
+  }
+  
+  // Deklarasi kelas OnlineCourse mewarisi kelas Course
+  class OnlineCourse extends Course{
+      // Metode yang diimplementasikan dari super class
+      public function getCourseDetails() {
+          return "Kelas online diadakan pada malam hari melalui google meet.";
+      }
+  }
+  
+  // Deklarasi kelas OfflineCourse mewarisi kelas Course
+  class OfflineCourse extends Course{
+      // Metode yang diimplementasikan dari super class
+      public function getCourseDetails() {
+          return "Kelas offline diadakan pada pagi hari.";
+      }
+  }
+  
+  // Pembuatan objek baru
+  $online = new OnlineCourse();
+  //Memanggil metode untuk menampilkan data
+  echo $online->getCourseDetails() . " <br>";
+  
+  // Pembuatan objek baru
+  $offline = new OfflineCourse();
+  //Memanggil metode untuk menampilkan data
+  echo $offline->getCourseDetails();
+  ?>
+  ```
+- **Hasil Output**<br>
+![3_4](https://github.com/user-attachments/assets/439e1f12-7bf4-45a6-b704-afc14dcf9e63)
+
+### TUGAS:
+**1. Implementasikan kelas Person sebagai induk dari Dosen dan Mahasiswa.**<br>
+>Mendeklarasikan class baru bernama `Person `yang akan digunakan sebagai super class yang akan diwarisi oleh kelas `Dosen` dan `Mahasiswa`. Kemudian mendeklarasikan atribut `nama` menyimpan data yang berkaitan dengan atribut tersebut.
+```
+<?php
+// Deklarasi kelas Person
+class Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+    protected $nama;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama) {
+        $this->nama = $nama;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nama
+    public function getName() {
+        return $this->nama; //Menetapkan nilai parameter $nama ke atribut nama
+    }
+}
+```
+**2. Gunakan konsep Inheritance untuk membuat hierarki kelas yang memungkinkan Dosen dan Mahasiswa memiliki atribut dan metode yang sesuai dengan perannya.**<br>
+>Mendeklarasikan class baru bernama `Dosen` yang mewarisi class `Person` dan akan digunakan untuk membuat objek yang mewakili dosen. Kemudian Mendeklarasikan atribut `nidn` dan `mataKuliah` untuk menyimpan data yang berkaitan dengan atribut tersebut. Kemudian mendeklarasikan class baru bernama `Mahasiswa` yang mewarisi class `Person` dan akan digunakan untuk membuat objek yang mewakili mahasiswa. Kemudian Mendeklarasikan atribut `nim` dan `jurusan` untuk menyimpan data yang berkaitan dengan atribut tersebut.
+```
+<?php
+// Deklarasi kelas Person
+class Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+    protected $nama;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama) {
+        $this->nama = $nama;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nama
+    public function getName() {
+        return $this->nama; //Menetapkan nilai parameter $nama ke atribut nama
+    }
+}
+
+// Deklarasi kelas Dosen
+class Dosen extends Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Dosen
+    public $nidn;
+    public $mataKuliah;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama, $nidn, $mataKuliah) {
+        parent::__construct($nama);
+        $this->nidn = $nidn;
+        $this->mataKuliah = $mataKuliah;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nidn
+    public function getNIDN() {
+        return $this->nidn; //Mengembalikan nilai atribut nidn
+    }
+
+    //Metode untuk mengatur nilai atribut nidn
+    public function setNIDN($nidn) {
+        $this->nidn = $nidn; //Menetapkan nilai parameter $nidn ke atribut nidn
+    }
+
+    // Metode untuk mendapatkan nilai atribut mataKuliah
+    public function getMataKuliah() {
+        return $this->mataKuliah; //Mengembalikan nilai atribut mataKuliah
+    }
+
+    //Metode untuk mengatur nilai atribut mataKuliah
+    public function setMataKuliah($mataKuliah) {
+        $this->mataKuliah = $mataKuliah; //Menetapkan nilai parameter $mataKuliah ke atribut mataKuliah
+    }
+}
+
+// Deklarasi kelas Mahasiswa
+class Mahasiswa extends Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Mahasiswa
+    public $nim;
+    public $jurusan;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama, $nim, $jurusan) {
+        parent::__construct($nama); //Memanggil konstruktor dari super class
+        $this->nim = $nim;
+        $this->jurusan = $jurusan;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nim
+    public function getNIM() {
+        return $this->nim; //Mengembalikan nilai atribut nim
+    }
+
+    //Metode untuk mengatur nilai atribut nim
+    public function setNIM($nim) {
+        $this->nim = $nim; //Menetapkan nilai parameter $nim ke atribut nim
+    }
+
+    // Metode untuk mendapatkan nilai atribut jurusan
+    public function getJurusan() {
+        return $this->jurusan; //Mengembalikan nilai atribut jurusan
+    }
+
+    //Metode untuk mengatur nilai atribut jurusan
+    public function setJurusan($jurusan) {
+        $this->jurusan = $jurusan; //Menetapkan nilai parameter $jurusan ke atribut jurusan
+    }
+}
+```
+**3. Terapkan Polymorphism dengan membuat metode getRole() di kelas Person dan override metode ini di kelas Dosen dan Mahasiswa untuk menampilkan peran yang berbeda**<br>
+>Menambahkan metode `getRole()` di kelas `Person` untuk mengembalikan nilai peran umum. Kemudian kelas `Dosen` mengganti (override) metode `getRole()` dari kelas `Person, mengembalikan nilai informasi peran dosen dengan NIDN dan mata kuliah yang diampu. Sedangkan kelas Mahasiswa mengganti (override) `getRole()` dari kelas `Person, mengembalikan nilai informasi peran mahasiswa dengan NIM dan asal jurusan.
+```
+<?php
+// Deklarasi kelas Person
+class Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+    protected $nama;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama) {
+        $this->nama = $nama;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nama
+    public function getName() {
+        return $this->nama; //Menetapkan nilai parameter $nama ke atribut nama
+    }
+
+    // Metode untuk menampilkan informasi peran
+    public function getRole() {
+        return "Umum";
+    }
+}
+
+// Deklarasi kelas Dosen
+class Dosen extends Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Dosen
+    public $nidn;
+    public $mataKuliah;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama, $nidn, $mataKuliah) {
+        parent::__construct($nama);
+        $this->nidn = $nidn;
+        $this->mataKuliah = $mataKuliah;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nidn
+    public function getNIDN() {
+        return $this->nidn; //Mengembalikan nilai atribut nidn
+    }
+
+    //Metode untuk mengatur nilai atribut nidn
+    public function setNIDN($nidn) {
+        $this->nidn = $nidn; //Menetapkan nilai parameter $nidn ke atribut nidn
+    }
+
+    // Metode untuk mendapatkan nilai atribut mataKuliah
+    public function getMataKuliah() {
+        return $this->mataKuliah; //Mengembalikan nilai atribut mataKuliah
+    }
+
+    //Metode untuk mengatur nilai atribut mataKuliah
+    public function setMataKuliah($mataKuliah) {
+        $this->mataKuliah = $mataKuliah; //Menetapkan nilai parameter $mataKuliah ke atribut mataKuliah
+    }
+ 
+    // Override metode untuk menampilkan peran dosen
+    public function getRole() {
+        return $this->nama . " adalah seorang Dosen dengan NIDN " . $this->nidn . " yang mengampu mata kuliah " . $this->mataKuliah . ".<br>";
+    }
+}
+
+// Deklarasi kelas Mahasiswa
+class Mahasiswa extends Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Mahasiswa
+    public $nim;
+    public $jurusan;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama, $nim, $jurusan) {
+        parent::__construct($nama); //Memanggil konstruktor dari super class
+        $this->nim = $nim;
+        $this->jurusan = $jurusan;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nim
+    public function getNIM() {
+        return $this->nim; //Mengembalikan nilai atribut nim
+    }
+
+    //Metode untuk mengatur nilai atribut nim
+    public function setNIM($nim) {
+        $this->nim = $nim; //Menetapkan nilai parameter $nim ke atribut nim
+    }
+
+    // Metode untuk mendapatkan nilai atribut jurusan
+    public function getJurusan() {
+        return $this->jurusan; //Mengembalikan nilai atribut jurusan
+    }
+
+    //Metode untuk mengatur nilai atribut jurusan
+    public function setJurusan($jurusan) {
+        $this->jurusan = $jurusan; //Menetapkan nilai parameter $jurusan ke atribut jurusan
+    }
+
+    // Override metode untuk menampilkan peran mahasiswa
+    public function getRole() {
+        return $this->nama . " adalah seorang Mahasiswa dengan NIM " . $this->nim . " yang berasal dari jurusan " . $this->jurusan . ".<br>";
+    }
+}
+```
+**4. Gunakan Encapsulation untuk melindungi atribut nidn di kelas Dosen dan nim di kelas Mahasiswa.**<br>
+>Mengubah atribut `nidn` di kelas `Dosen` dan `nim` di kelas `Mahasiswa` menjadi private sehingga hanya bisa diakses di dalam kelas itu sendiri dan tidak bisa diakses langsung oleh kelas turunan atau dari luar kelas.
+```
+<?php
+// Deklarasi kelas Person
+class Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+    protected $nama;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama) {
+        $this->nama = $nama;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nama
+    public function getName() {
+        return $this->nama; //Menetapkan nilai parameter $nama ke atribut nama
+    }
+
+    // Metode untuk menampilkan informasi peran
+    public function getRole() {
+        return "Umum";
+    }
+}
+
+// Deklarasi kelas Dosen
+class Dosen extends Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Dosen
+    private $nidn;
+    private $mataKuliah;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama, $nidn, $mataKuliah) {
+        parent::__construct($nama);
+        $this->nidn = $nidn;
+        $this->mataKuliah = $mataKuliah;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nidn
+    public function getNIDN() {
+        return $this->nidn; //Mengembalikan nilai atribut nidn
+    }
+
+    //Metode untuk mengatur nilai atribut nidn
+    public function setNIDN($nidn) {
+        $this->nidn = $nidn; //Menetapkan nilai parameter $nidn ke atribut nidn
+    }
+
+    // Metode untuk mendapatkan nilai atribut mataKuliah
+    public function getMataKuliah() {
+        return $this->mataKuliah; //Mengembalikan nilai atribut mataKuliah
+    }
+
+    //Metode untuk mengatur nilai atribut mataKuliah
+    public function setMataKuliah($mataKuliah) {
+        $this->mataKuliah = $mataKuliah; //Menetapkan nilai parameter $mataKuliah ke atribut mataKuliah
+    }
+ 
+    // Override metode untuk menampilkan peran dosen
+    public function getRole() {
+        return $this->nama . " adalah seorang Dosen dengan NIDN " . $this->nidn . " yang mengampu mata kuliah " . $this->mataKuliah . ".<br>";
+    }
+}
+
+// Deklarasi kelas Mahasiswa
+class Mahasiswa extends Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Mahasiswa
+    private $nim;
+    private $jurusan;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama, $nim, $jurusan) {
+        parent::__construct($nama); //Memanggil konstruktor dari super class
+        $this->nim = $nim;
+        $this->jurusan = $jurusan;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nim
+    public function getNIM() {
+        return $this->nim; //Mengembalikan nilai atribut nim
+    }
+
+    //Metode untuk mengatur nilai atribut nim
+    public function setNIM($nim) {
+        $this->nim = $nim; //Menetapkan nilai parameter $nim ke atribut nim
+    }
+
+    // Metode untuk mendapatkan nilai atribut jurusan
+    public function getJurusan() {
+        return $this->jurusan; //Mengembalikan nilai atribut jurusan
+    }
+
+    //Metode untuk mengatur nilai atribut jurusan
+    public function setJurusan($jurusan) {
+        $this->jurusan = $jurusan; //Menetapkan nilai parameter $jurusan ke atribut jurusan
+    }
+
+    // Override metode untuk menampilkan peran mahasiswa
+    public function getRole() {
+        return $this->nama . " adalah seorang Mahasiswa dengan NIM " . $this->nim . " yang berasal dari jurusan " . $this->jurusan . ".<br>";
+    }
+}
+```
+**5. Buat kelas abstrak Jurnal dan implementasikan konsep Abstraction dengan membuat kelas turunan JurnalDosen dan JurnalMahasiswa yang masing-masing memiliki cara tersendiri untuk mengelola pengajuan jurnal.**<br>
+>Mendeklarasikan absctract class baru bernama `Jurnal `yang akan digunakan sebagai kelas dasar yang harus diwariskan oleh kelas lain. Membuat metode abstrak `pengajuanJurnal()` tanpa implementasi di kelas Pengguna sehingga harus diimplementasikan di kelas turunan. Kemudian mendeklarasikan class baru bernama `JurnalMahasiswa` dan `JurnalDosen` yang mewarisi kelas `Jurnal`. Mengimplementasikan metode `pengajuanJurnal()` ke kelas masing-masing yang memiliki tindakan berbeda dalam menampilkan informasi.
+```
+<?php
+// Deklarasi kelas Person
+class Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Person
+    protected $nama;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama) {
+        $this->nama = $nama;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nama
+    public function getName() {
+        return $this->nama; //Menetapkan nilai parameter $nama ke atribut nama
+    }
+
+    // Metode untuk menampilkan informasi peran
+    public function getRole() {
+        return "Umum";
+    }
+}
+
+// Deklarasi kelas Dosen
+class Dosen extends Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Dosen
+    private $nidn;
+    private $mataKuliah;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama, $nidn, $mataKuliah) {
+        parent::__construct($nama);
+        $this->nidn = $nidn;
+        $this->mataKuliah = $mataKuliah;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nidn
+    public function getNIDN() {
+        return $this->nidn; //Mengembalikan nilai atribut nidn
+    }
+
+    //Metode untuk mengatur nilai atribut nidn
+    public function setNIDN($nidn) {
+        $this->nidn = $nidn; //Menetapkan nilai parameter $nidn ke atribut nidn
+    }
+
+    // Metode untuk mendapatkan nilai atribut mataKuliah
+    public function getMataKuliah() {
+        return $this->mataKuliah; //Mengembalikan nilai atribut mataKuliah
+    }
+
+    //Metode untuk mengatur nilai atribut mataKuliah
+    public function setMataKuliah($mataKuliah) {
+        $this->mataKuliah = $mataKuliah; //Menetapkan nilai parameter $mataKuliah ke atribut mataKuliah
+    }
+ 
+    // Override metode untuk menampilkan peran dosen
+    public function getRole() {
+        return $this->nama . " adalah seorang Dosen dengan NIDN " . $this->nidn . " yang mengampu mata kuliah " . $this->mataKuliah . ".<br>";
+    }
+}
+
+// Deklarasi kelas Mahasiswa
+class Mahasiswa extends Person {
+    // Deklarasi Atribut atau Properties untuk menyimpan data dari kelas Mahasiswa
+    private $nim;
+    private $jurusan;
+
+    // Konstruktor untuk menginisialisasi atribut ketika objek dibuat
+    public function __construct($nama, $nim, $jurusan) {
+        parent::__construct($nama); //Memanggil konstruktor dari super class
+        $this->nim = $nim;
+        $this->jurusan = $jurusan;
+    }
+
+    // Metode untuk mendapatkan nilai atribut nim
+    public function getNIM() {
+        return $this->nim; //Mengembalikan nilai atribut nim
+    }
+
+    //Metode untuk mengatur nilai atribut nim
+    public function setNIM($nim) {
+        $this->nim = $nim; //Menetapkan nilai parameter $nim ke atribut nim
+    }
+
+    // Metode untuk mendapatkan nilai atribut jurusan
+    public function getJurusan() {
+        return $this->jurusan; //Mengembalikan nilai atribut jurusan
+    }
+
+    //Metode untuk mengatur nilai atribut jurusan
+    public function setJurusan($jurusan) {
+        $this->jurusan = $jurusan; //Menetapkan nilai parameter $jurusan ke atribut jurusan
+    }
+
+    // Override metode untuk menampilkan peran mahasiswa
+    public function getRole() {
+        return $this->nama . " adalah seorang Mahasiswa dengan NIM " . $this->nim . " yang berasal dari jurusan " . $this->jurusan . ".<br>";
+    }
+}
+
+// Deklarasi kelas abstrak Jurnal
+abstract class Jurnal {
+    // Metode abstrak yang akan diimplementasikan oleh kelas turunan
+    abstract public function pengajuanJurnal();
+}
+
+// Deklarasi kelas JurnalDosen mewarisi kelas Jurnal
+class JurnalDosen extends Jurnal{
+    // Metode yang diimplementasikan dari super class
+    public function pengajuanJurnal() {
+        return "Dosen dapat melakukan pengelolaan pengajuan jurnal menggunakan akses Dosen";
+    }
+}
+
+// Deklarasi kelas JurnalMahasiswa mewarisi kelas Jurnal
+class JurnalMahasiswa extends Jurnal {
+    // Metode yang diimplementasikan dari super class
+    public function pengajuanJurnal() {
+        return "Mahasiswa dapat melakukan pengelolaan pengajuan jurnal menggunakan akses Mahasiswa";
+    }
+}
+
+// Pembuatan objek baru menggunakan parameter
+$mhs1 = new Mahasiswa("Kazuha", "230102065", "Rekayasa Elektronika dan Mekatronika");
+$jurnalMhs = new JurnalMahasiswa();
+//Memanggil metode untuk menampilkan data 
+echo $mhs1->getRole();
+echo $jurnalMhs->pengajuanJurnal();
+echo "<br><br>";
+
+// Pembuatan objek baru menggunakan parameter
+$dsn1 = new Dosen("Nahida", "987654321", "Bahasa Inggris");
+$jurnalDsn = new JurnalDosen();
+//Memanggil metode untuk menampilkan data 
+echo $dsn1->getRole();
+echo $jurnalDsn->pengajuanJurnal();
+?>
+```
+**Hasil Output**<br>
+![3_5](https://github.com/user-attachments/assets/b9fb95a2-9e97-4594-814a-f572e34c0056)
